@@ -3,8 +3,8 @@
 # cd to the current directory as it runs other shell scripts
 cd "$(dirname "$0")" || exit
 
-ISSUES=$(cat all.json | jq '.[].number')
-for ISSUE in $ISSUES
+PULL_REQUESTS=$(cat all.json | jq '.[].number')
+for PULL_REQUEST in $PULL_REQUESTS
 do
-  ./issue ISSUE
+  ./pull_request.sh ${PULL_REQUEST}
 done
