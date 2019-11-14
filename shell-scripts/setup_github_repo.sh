@@ -50,10 +50,10 @@ fi
 ###########################################
 # Set up the data directory
 ###########################################
-mkdir -p data/${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}
+mkdir -p data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
 
-# echo "{" > data/${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}/env.json
-# echo "  \"github_token\": \"\${GIHUB_TOKEN}" > data/${GIHUB_TOKEN}/${GITHUB_REPOSITORY}/env.json
-# echo "  \"github_repository\": \"\${GIHUB_TOKEN}" > data/${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}/env.json
-# echo "  \"github_organization\": \"\${GIHUB_TOKEN}" > data/${GITHUB_REPOSITORY}/${GITHUB_REPOSITORY}/env.json
-# echo "}" > data/${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}/env.json
+echo "{" > data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/env.json
+echo "  \"github_token\": \"${GIHUB_TOKEN}\"," >> data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/env.json
+echo "  \"github_organization\": \"${GITHUB_ORGANIZATION}\"," >> data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/env.json
+echo "  \"github_repository\": \"${GITHUB_REPOSITORY}\"" >> data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/env.json
+echo "}" >> data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/env.json
