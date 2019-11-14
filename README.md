@@ -8,7 +8,14 @@ GitHub API, ZenHub API, CircleCI APIを利用してソフトウェア開発の�
 
 <img width="1147" alt="スクリーンショット 2019-11-15 3 48 02" src="https://user-images.githubusercontent.com/7414320/68886566-cf06c580-075a-11ea-83c5-d1df3c20fa39.png">
 
+## なんでZenHubのレポートに頼らないの？
+
+2019年11月14日現在、まだZenHubレポートのカスタマイズ性が低く、必要な情報をレポートで表示する必要がありません。
+上記2冊の参考図書をもとに、ソフトウェア開発のためのメトリクスをすべて取得するためにはAPIから情報を取得する以外にありませんでした。
+
 ## 使い方
+
+### 事前セットアップ
 
 - [GitHub personal token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)を用意します、これはGitHub APIにアクセスする際に[Authentication](https://developer.github.com/v3/#authentication)が必要となるためです
 - 上記のGitHub personal tokenを`env.json`に保存してください。`env.json`の作り方は`env.default.json`を参考にしてください
@@ -18,3 +25,8 @@ GitHub API, ZenHub API, CircleCI APIを利用してソフトウェア開発の�
   - これで`data/your_org/my_repo`ディレクトリが作成され、必要なファイルがコピーされます
 - `cd data/your_org/my_repo`で移動してください
 
+### GitHub Pull Request分析
+
+### Circle CI分析
+
+### ZenHub分析
