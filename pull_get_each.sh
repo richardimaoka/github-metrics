@@ -10,7 +10,17 @@ GITHUB_REPOSITORY=$(jq  -r '.github_repository' env.json)
 
 PULL_REQUEST_NUMBER=$1
 
-curl \
+mkdir -p pulls
+
+# 2>/dev/null to discard curl's in-progress stats
+JSON=$(curl \
   -H "Authorization: token ${GIHUB_TOKEN}" \
-  "https://api.github.com/repos/${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}/pulls/${PULL_REQUEST_NUMBER}" \
-  > "${PULL_REQUEST_NUMBER}.json"
+  "https://api.github.com/repos/${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}/pulls/${PULL_REQUEST_NUMBER}" 2>/dev/null)
+
+ERROR_MESSAGE=$(echo "${JSON}" | jq -r '.message')
+if [ "${ERROR_MESSAGE}" = "Not Found" ] ; then
+  >&2 echo "Not found, pull request ${PULL_REQUEST_NUMBER}"
+  exit 1
+else
+  echo "${JSON}"> pulls/"${PULL_REQUEST_NUMBER}.json"
+fi
