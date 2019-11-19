@@ -53,16 +53,19 @@ fi
 ###########################################
 # Set up the data directory
 ###########################################
-mkdir -p ../data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
+mkdir -p data
+mkdir -p data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
 
-echo "{" > ../data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/env.json
-echo "  \"github_token\": \"${GIHUB_TOKEN}\"," >> ../data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/env.json
-echo "  \"github_organization\": \"${GITHUB_ORGANIZATION}\"," >> ../data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/env.json
-echo "  \"github_repository\": \"${GITHUB_REPOSITORY}\"" >> ../data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/env.json
-echo "}" >> ../data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/env.json
+ENV_JSON="data/${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}/env.json"
+echo "{" > "${ENV_JSON}"
+echo "  \"github_token\": \"${GIHUB_TOKEN}\"," >> "${ENV_JSON}"
+echo "  \"github_organization\": \"${GITHUB_ORGANIZATION}\"," >> "${ENV_JSON}"
+echo "  \"github_repository\": \"${GITHUB_REPOSITORY}\"" >> "${ENV_JSON}"
+echo "}" >> "${ENV_JSON}"
 
-cp extract.sh data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/extract.sh
-cp issue.sh data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/issue.sh
-cp pull_request_get.sh data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/pull_request_get.sh
-cp pulls_expand_all.sh data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/pulls_expand_all.sh
-cp pulls.sh data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"/pulls.sh
+cp extract.sh data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
+cp issue.sh data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
+cp pull_get_each.sh data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
+cp pulls_expand_all.sh data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
+cp pulls_convert_to_csv.sh data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
+cp pulls.sh data/"${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
