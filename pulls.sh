@@ -8,9 +8,7 @@ GIHUB_TOKEN=$(cat env.json | jq -r '.github_token')
 GITHUB_ORGANIZATION=$(cat env.json | jq  -r '.github_organization')
 GITHUB_REPOSITORY=$(cat env.json | jq  -r '.github_repository')
 
-mkdir -p "${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
-
 curl \
   -H "Authorization: token ${GIHUB_TOKEN}" \
-  "https://api.github.com/repos/${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}/pulls/" \
-  > "${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}/pulls.json"
+  "https://api.github.com/repos/${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}/pulls" \
+  > pulls.json
